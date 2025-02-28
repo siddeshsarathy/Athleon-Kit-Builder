@@ -1,4 +1,3 @@
-import { firestore } from '@/utils/config/firebase-admin.config'
 import { FirestoreAdapter } from '@auth/firebase-adapter'
 import NextAuth from 'next-auth'
 import GitHubProvider from 'next-auth/providers/github'
