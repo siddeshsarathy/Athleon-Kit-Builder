@@ -1,10 +1,13 @@
-import { initFirestore } from '@auth/firebase-adapter'
-import { cert } from 'firebase-admin/app'
+import admin from "firebase-admin";
 
-export const firestore = initFirestore({
-  credential: cert({
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-    privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n')
-  })
-})
+if (process.env.FIREBASE_DISABLED === "true") {
+  console.log("🚨 Firebase Admin is disabled for this deployment.");
+} else {
+  if (!admin.apps.length) {
+    admin.initializeApp({
+      credential: admin.credential.applicationDefault(),
+    });
+  }
+}
+
+export default admin;
