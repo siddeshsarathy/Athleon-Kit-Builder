@@ -1,8 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    domains: ['avatars.githubusercontent.com', 'lh3.googleusercontent.com']
-  }
-}
-
-module.exports = nextConfig
+module.exports = {
+  env: {
+    FIREBASE_DISABLED: "true",
+  },
+  reactStrictMode: true,
+};
